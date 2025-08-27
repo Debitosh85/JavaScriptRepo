@@ -1,0 +1,29 @@
+{
+  "name": "javascript_app",
+  "version": "1.0.0",
+  "description": "Learn and Practice javaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Javascript",
+    "App",
+    "latest",
+    "tech"
+  ],
+  "author": "Debitosh",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "eslint-config-google": "^0.14.0",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "jquery": "^3.7.1"
+  }
+}
