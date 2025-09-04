@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <script type="text/javascript" src="../Src/Scripts/Emi.demo.js"></script>
+    <style>
+      .MainContainer {
+        background-color:whitesmoke;
+        box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+        width: 900px;
+        height: 300px;
+      }
+      span {
+        padding: 2px;
+      }
+      h1{
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body class="container-fluid">
+    <h1>Personal Emi Calculator</h1>
+    <div class="MainContainer">
+      <div class="row">
+        <div class="col d-flex justify-content-center align-content-center">
+          <span>Amount you Need &#8377;</span>
+          <input type="text" size="10" class="formcontrol" id="txtAmount"/>
+        </div>
+        <div class="col d-flex justify-content-center align-content-center">
+          <span>for</span>
+          <input type="text" class="formcontrol" size="10" id="txtYears" />
+          <span>years</span>
+        </div>
+        <div class="col d-flex justify-content-center align-content-center">
+          <span>Intrestrate</span>
+          <input type="text" class="formcontrol" size="10" id="txtIntrest" />
+          <span>%</span>
+        </div>
+        <div class="row mt-4">
+          <div class="col d-flex justify-content-center align-content-center">
+            <span>&#8377;50000</span>
+            <input type="range" class="form-range" min="50000" max="100000" id="rangeAmount" onchange="Amountchange()">
+            <span>&#8377;100000</span>
+        </div>
+        <div class="col d-flex justify-content-center align-content-center">
+          <span>1</span>
+          <input type="range" class="form-range" min="1" max="5" id="rangeYears" onchange="yearChange()">
+          <span>5</span>
+        </div>
+        <div class="col d-flex justify-content-center align-content-center">
+          <span>10.4</span>
+          <input type="range" class="form-range" min="10.4" max="18.5" id="rangeIntrest" onchange="Intrestchange()">
+          <span>18.5</span>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col d-flex justify-content-center align-content-center">
+          <button class="btn btn-primary" onclick="EmiCalculate()">Calculate</button>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h1 id="resultDisplayer" class="d-flex align-content-center justify-content-center"></h1>
+    </div>
+      
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>
