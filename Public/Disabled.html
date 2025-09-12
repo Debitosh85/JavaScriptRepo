@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <script>
+      function DisableFunction() {
+        var txt = document.getElementById("txtbox").value;
+        var button = document.querySelector("span button");
+
+        if (txt == "") {
+          button.disabled = true;
+        } else {
+          button.disabled = false;
+        }
+      }
+    </script>
+  </head>
+  <body class="container-fluid">
+    <div clas="d-flex justify-content-center align-item-center ">
+      <h2>Button toggle</h2>
+      <div class="input-group input-group-sm">
+        <input
+          type="text"
+          class="form-control w-20"
+          id="txtbox"
+          onblur="DisableFunction()"
+        />
+        <span class="input-group-text"
+          ><button
+            disabled
+            class="btn btn-success input-group-text"
+            id="button"
+          >
+            Register
+          </button></span
+        >
+
+        <link rel="stylesheet" href="../node_modules/jquery/dist/jquery.js" />
+        <link
+          rel="stylesheet"
+          href="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+        />
+      </div>
+    </div>
+  </body>
+</html>

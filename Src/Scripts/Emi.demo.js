@@ -19,5 +19,5 @@ function EmiCalculate() {
   var result = (p * r * Math.pow(1 + r, n)) / Math.pow(1 + r, n) - 1;
 
   document.getElementById("resultDisplayer").innerHTML =
-    `your preferred emi amount for " ${p} "in" ${r} "years" "including intrest" ${n} "is" <span class="text-primary fw-bold">${result}</span>`;
+    `your preferred emi amount for  ${p} in ${r} years including intrest ${n} is <span class="text-primary fw-bold">${result}</span>`;
 }
