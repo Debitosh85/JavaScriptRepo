@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlipKart</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <script>
+      function bodyload() {
+        fetch("../data/flipkart.json")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (product) {
+            document.getElementById("ProductImage").src = product.photo;
+            document.getElementById("ProductTitle").innerHTML = product.title;
+            document.getElementById("Productrating").innerHTML =
+              product.rating.rate;
+            document.getElementById("Productreviews").innerHTML =
+              "<span class='text-secondary fw-bold'>" +
+              product.rating.ratings +
+              " Ratings & " +
+              product.rating.reviews +
+              " Reviews</span>";
+            document.getElementById("ProductPrice").innerHTML =
+              "&#8377; " +
+              product.price +
+              " <small class='text-muted'><del>&#8377;" +
+              product.actualprice +
+              "</del></small>";
+            for (var offer of product.offers) {
+              var li = document.createElement("li");
+              li.innerHTML =
+                "<span class='bi bi-tag-fill text-success'></span> " + offer;
+              li.className = "mt-2";
+              document.getElementById("OffersList").appendChild(li);
+            }
+          });
+      }
+    </script>
+  </head>
+  <body class="container-fluid" onload="bodyload()">
+    <section class="row mt-4">
+      <div class="col-3">
+        <img width="300" height="400" id="ProductImage" />
+      </div>
+      <div class="col-9">
+        <h3 id="ProductTitle"></h3>
+        <div class="d-flex">
+          <div class="bg-success text-white p-1 rounded" style="width: 60px">
+            <span id="Productrating"></span>
+            <span class="bi bi-star-fill"></span>
+          </div>
+          <div class="ms-3">
+            <span id="Productreviews"></span>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h1 id="ProductPrice"></h1>
+        </div>
+        <h3>Offers</h3>
+        <ul id="OffersList"></ul>
+      </div>
+    </section>
+  </body>
+</html>
