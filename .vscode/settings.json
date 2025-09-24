@@ -7,5 +7,8 @@
   "emmet.triggerExpansionOnTab": true,
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+  
 }
+
+

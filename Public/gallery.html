@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" herf="../node_modules/bootstrap/dist/css/bootstrap.css">
+<script type="text/javascript">
+  var path =["assets/name.jpg",
+  "assets/peakpx (2).jpg",
+  "assets/peakpx.jpg",
+  "assets/Popular-Temples-in-India.jpg"
+]
+  function bodyLoad(){
+    for(var gallery of path){
+      var image = document.createElement("img");
+      image.src = gallery;
+      image.style.width = "200px";
+      image.style.padding = "2px";
+      image.classList.add("zoom");
+      document.getElementById("gallery").appendChild(image);
+    }
+  }
+</script>
+<style>
+  .zoom {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+  border-radius: 8px;                     
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5); 
+}
+</style>
+<body class="container-fluid" onload="bodyLoad()" >
+  <div class="d-flex justify-content-center align-item-center">
+    <marquee scrollamount="5" id="gallery" onmouseover="this.stop()" onmouseout="this.start()">
+    </marquee>
+  </div>
+</body>
+</html>
+
