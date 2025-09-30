@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mars Photo</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+  </head>
+  <body class="container-fluid" onload="bodyload()">
+    <h2 class="text-success fw-bold">Mars Photo</h2>
+    <table class="table table-dark table-bordered table-hover mt-2">
+      <thead class="table-dark">
+        <tr>
+          <th>PhotoId</th>
+          <th>Sol</th>
+          <th>Camera</th>
+          <th>Camera Full Name</th>
+          <th>RoverId</th>
+          <th>Image</th>
+          <th>EarthDate</th>
+          <th>Rover Name</th>
+        </tr>
+      </thead>
+      <tbody id="tablebody"></tbody>
+    </table>
+
+    <script>
+      function bodyload() {
+        fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=hJlqIpR8OcHFGmT41PQSbSurcWXqa4oqoXqb4iVk")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (mars) {
+            for (var photo of mars.photos) {
+              var tr = document.createElement("tr");
+
+              var PhotoId = document.createElement("td");
+              PhotoId.innerHTML = photo.id;
+
+              var Sol = document.createElement("td");
+              Sol.innerHTML = photo.sol;
+
+              var Camera = document.createElement("td");
+              Camera.innerHTML = photo.camera.name;
+
+              var FullName = document.createElement("td");
+              FullName.innerHTML = photo.camera.full_name;
+
+              var RoverId = document.createElement("td");
+              RoverId.innerHTML = photo.rover.id;
+
+              var Image = document.createElement("td");
+              var imgTag = document.createElement("img");
+              imgTag.src = photo.img_src;
+              imgTag.width = 150;
+              Image.appendChild(imgTag);
+
+              var EarthDate = document.createElement("td");
+              EarthDate.innerHTML = photo.earth_date;
+
+              var Rover = document.createElement("td");
+              Rover.innerHTML = photo.rover.name;
+
+              tr.appendChild(PhotoId);
+              tr.appendChild(Sol);
+              tr.appendChild(Camera);
+              tr.appendChild(FullName);
+              tr.appendChild(RoverId);
+              tr.appendChild(Image);
+              tr.appendChild(EarthDate);
+              tr.appendChild(Rover);
+
+              document.getElementById("tablebody").appendChild(tr);
+            }
+          });
+      }
+    </script>
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

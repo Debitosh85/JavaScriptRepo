@@ -1,0 +1,16 @@
+[
+
+  {
+    "title": "Samsung-Tv",
+    "price":30000,
+    "Ratings":{"rate":4.5,"count":6000}
+  },
+
+  {
+    "title":"Apple mobile",
+    "price":10000000,
+    "Ratings":{"rate":3.2,"count":9000}
+  }
+
+
+]

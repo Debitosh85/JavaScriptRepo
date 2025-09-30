@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+  </head>
+  <script>
+    function bodyload() {
+      fetch("../data/product.json")
+        .then(function (response) {
+          return response.json()
+        })
+        .then(function (products) {
+          for (var product of products) {
+            var tr = document.createElement("tr")
+            var title = document.createElement("td")
+            var price = document.createElement("td")
+            var Ratings = document.createElement("td")
+
+            title.textContent = product.title
+            price.textContent = product.price
+            Ratings.textContent = `${product.Ratings.rate} [${product.Ratings.count}]`
+
+            tr.appendChild(title)
+            tr.appendChild(price)
+            tr.appendChild(Ratings)
+            document.getElementById("tablebody").appendChild(tr)
+          }
+        })
+    }
+  </script>
+  <body class="container-fluid" onload="bodyload()">
+    <div class="d-flex justify-content-center align-item-center mt-2">
+      <span class="bi bi-cpu"></span>
+      <h2 class="text-danger">Fetching The Product</h2>
+    </div>
+    <div class="d-flex align-item-center justify-content-center">
+      <table class="table table-bordered table-hover" style="width: 300px">
+        <thead class="table-dark">
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Ratings</th>
+          </tr>
+        </thead>
+        <tbody id="tablebody"></tbody>
+      </table>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>
