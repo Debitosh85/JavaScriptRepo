@@ -119,9 +119,13 @@
       }
 
       function LoadCartItems() {
+        var total = 0
         document.querySelector("tbody").innerHTML = ""
+        document.querySelector("tfoot").innerHTML = ""
+
         for (var item of cartItems) {
           var tr = document.createElement("tr")
+          var tr1 = document.createElement("tr")
           var tdTitle = document.createElement("td")
           var tdImage = document.createElement("td")
           var tdPrice = document.createElement("td")
@@ -131,14 +135,54 @@
           tdImage.innerHTML = `<img src=${item.image} width="50" height="50">`
           // tdPrice.innerHTML = innerHTML = item.price;
           tdPrice.innerHTML = item.price
-          tdAction.innerHTML = `<button class="bi bi-trash-fill btn btn-danger"></button>`
+          tdAction.innerHTML = `<button class="bi bi-trash-fill btn btn-danger" onclick="removeClick(${item.id})"></button>`
+          total += item.price
 
           tr.appendChild(tdTitle)
           tr.appendChild(tdImage)
           tr.appendChild(tdPrice)
           tr.appendChild(tdAction)
+
           document.querySelector("tbody").appendChild(tr)
         }
+        // var tr1= document.createElement("tr");
+        // var Total = document.createElement("td");
+        // Total.innerHTML = `<h2 class="fw-bold text-primary ">Total Price</h2>
+        //                      ${total} `
+
+        // tr1.appendChild(Total);
+        // document.querySelector("tfoot").appendChild(tr1);
+
+        var tr1 = document.createElement("tr")
+        var Total = document.createElement("td")
+        Total.colSpan = 4
+        Total.className = "text-end fw-bold text-primary"
+
+        Total.innerHTML = `<h2>Total Price : ${total}</h2>`
+        Total.style.fontsize = "5px"
+
+        tr1.appendChild(Total)
+        document.querySelector("tfoot").appendChild(tr1)
+      }
+
+      function removeClick(id) {
+        //   fetch(`http://fakestoreapi.com/products/${id}`)
+        //   .then(function(response){
+        //     return response.json();
+        //   })
+        // .then(function(product){
+        //   confirm(`Are you sure Want to Delete${product.name}`)
+        // })
+        var selectedIndex = cartItems.findIndex(function (item) {
+          confirm(`Are you Sure to Remove${item.title} from Cart`)
+          return item.id === id
+        })
+
+        if (selectedIndex !== -1) {
+          cartItems.splice(selectedIndex, 1)
+        }
+        GetCartCount()
+        LoadCartItems()
       }
     </script>
     <style>
@@ -210,7 +254,8 @@
                       <th>Price</th>
                     </tr>
                   </thead>
-                  <tbody></tbody>
+                  <tbody id="tablebody"></tbody>
+                  <tfoot id="TableFooter"></tfoot>
                 </table>
               </div>
             </div>
