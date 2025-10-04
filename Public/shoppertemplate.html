@@ -158,7 +158,7 @@
         Total.colSpan = 4
         Total.className = "text-end fw-bold text-primary"
 
-        Total.innerHTML = `<h2>Total Price : ${total}</h2>`
+        Total.innerHTML = `<h2>Total Price : &#8377;${total}</h2>`
         Total.style.fontsize = "5px"
 
         tr1.appendChild(Total)
@@ -166,23 +166,17 @@
       }
 
       function removeClick(id) {
-        //   fetch(`http://fakestoreapi.com/products/${id}`)
-        //   .then(function(response){
-        //     return response.json();
-        //   })
-        // .then(function(product){
-        //   confirm(`Are you sure Want to Delete${product.name}`)
-        // })
+        var flag;
         var selectedIndex = cartItems.findIndex(function (item) {
-          confirm(`Are you Sure to Remove${item.title} from Cart`)
+          flag=confirm(`Are you sure to delete ${item.title} from CartItems`)
           return item.id === id
         })
-
-        if (selectedIndex !== -1) {
-          cartItems.splice(selectedIndex, 1)
-        }
+        if(flag==true){
+        cartItems.splice(selectedIndex,1)
         GetCartCount()
         LoadCartItems()
+       }
+        
       }
     </script>
     <style>
