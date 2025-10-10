@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <script>
+      function GetTime() {
+        var date = new Date()
+        document.getElementById("clock").innerHTML = date.toLocaleTimeString()
+      }
+
+      function bodyload() {
+        var weeks = []
+        var month = []
+        var date = new Date()
+        var msg
+
+        if (date.getHours() >= 0.00 && date.getHours() <= 12.00) {
+          msg = "Good Morning"
+        } else if (date.getHours() >= 1.00 && date.getHours() <= 4.00) {
+          msg = "Good AfterNoon"
+        } else {
+          msg = "Good evening"
+        }
+        /* document.getElementById("clock").innerHTML = `
+        ${date.getHours()} ${date.getMinutes()} ${date.getSeconds()}
+        ` */
+        document.getElementById("calendar").innerHTML = `
+        ${date.getDay()} ${date.getDate()}`
+        document.getElementById("msg").innerHTML = msg
+        setInterval(GetTime, 1000)
+      }
+      function showDateTime(){
+        var now = new Date(document.getElementById("date").value)
+        document.getElementById("Display").innerHTML =
+          `${now.getDate()} ${now.getDay() } ${now.getMonth()}`
+      }
+    </script>
+  </head>
+  <body class="container-fluid" onload="bodyload()">
+    <div class="bg-danger btn-toolbar justify-content-between">
+      <div class="btn-group">
+        <button class="btn">Home</button>
+        <span class="bi bi-home"></span>
+
+        <button class="btn">About</button>
+        <button class="btn">Person</button>
+      </div>
+
+      <div id="msg">
+        <p></p>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn">
+          <span class="bi bi-clock" id="clock"></span>
+        </button>
+        <button class="btn">
+          <span class="bi bi-calendar" id="calendar"></span>
+        </button>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center align-item-center mt-2 me-2 " style="gap:10px">
+     
+        <input type="datetime-local" onchange="showDateTime()" id="date" />
+        <span id="Display">
+          <p></p>
+        </span>
+    </div>
+  </body>
+</html>
